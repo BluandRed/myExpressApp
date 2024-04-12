@@ -1,14 +1,14 @@
-const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
 
-const app = express();
-const expressLayout = require('express-ejs-layouts');
+var app = express();
+var expressLayout = require('express-ejs-layouts');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,7 +20,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//Allows access to website pages in route folder
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
@@ -44,5 +43,4 @@ app.use(function(err, req, res, next) {
 app.use(expressLayout);
 app.set('layout', './layouts/main');
 app.set('view engine', 'ejs');
-
 module.exports = app;
