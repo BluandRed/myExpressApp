@@ -16,4 +16,5 @@ const server = http.createServer(app);
 // server listen for any incoming requests
 server.listen(3000);
 
+//Displays confirmation message.
 console.log('My Blog server is running at port 3000')

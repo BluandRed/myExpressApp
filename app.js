@@ -1,24 +1,33 @@
+//Imports http-errors to allow the creation of error objects.
 const createError = require('http-errors');
+//Imports express to allow the creation of an exprress app
 const express = require('express');
+//Imports the express path module
 const path = require('path');
+//Imports cookie parser
 const cookieParser = require('cookie-parser');
+//Imports morgan logger middlewear
 const logger = require('morgan');
 
+//Requires the express apps pages.
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
+//Creates the express application.
 const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+//Impiments morgan logger, urlencoded middlewares and the json, cookie parser and path modules.
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Calls on the express apps pages.
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
@@ -38,4 +47,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+//Eports the app to the server/port
 module.exports = app;
