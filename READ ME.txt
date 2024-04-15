@@ -1,0 +1,6 @@
+To run the app locally, type: 
+node app.js
+Into the command bar, then view to app at the port displayed.
+
+The app has been uploaded and can be viewed on Heroku at:
+https://assignment3-3020647-e76668ec0596.herokuapp.com/
